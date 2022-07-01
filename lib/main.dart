@@ -23,8 +23,18 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          primarySwatch: MaterialColor(0xffF46F68, {
+        50: Color(0xffF46F68),
+        100: Color(0xffF46F68),
+        200: Color(0xffF46F68),
+        300: Color(0xffF46F68),
+        400: Color(0xffF46F68),
+        500: Color(0xffF46F68),
+        600: Color(0xffF46F68),
+        700: Color(0xffF46F68),
+        800: Color(0xffF46F68),
+        900: Color(0xffF46F68),
+      })),
       home: const splashscreen(),
     );
   }
