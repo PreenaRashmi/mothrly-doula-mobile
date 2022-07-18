@@ -1,4 +1,8 @@
+import 'package:doula/screens/auth/set_consultation_fee.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+
+import '../../themes.dart';
 
 class Skill {
   final String? image, title;
@@ -47,11 +51,10 @@ class SelectYourSkillsets extends StatelessWidget {
           backgroundColor: const Color(0xFFFAFAFA),
           elevation: 0,
           leading: IconButton(
-            onPressed: () {},
-            icon: new Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: SvgPicture.asset("assets/icons/back_arrow.svg"),
           ),
           // actions: [
           //   IconButton(
@@ -69,11 +72,7 @@ class SelectYourSkillsets extends StatelessWidget {
                   child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Select your skillsets",
-                      style: Theme.of(context)
-                          .textTheme
-                          .headline5
-                          ?.copyWith(fontWeight: FontWeight.bold)),
+                  Text("Select your skillsets", style: Themes().Heading2),
                   SizedBox(
                     height: 40,
                   ),
@@ -91,7 +90,7 @@ class SelectYourSkillsets extends StatelessWidget {
                       itemBuilder: (BuildContext context, int index) {
                         // print(skills[index].title);
                         return Column(
-                          // crossAxisAlignment: CrossAxisAlignment.center,
+                          //crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             // Expanded(
                             //   child:
@@ -108,33 +107,24 @@ class SelectYourSkillsets extends StatelessWidget {
                               child: ClipOval(
                                 child: Image.asset("${skills[index].image}"),
                               ),
-                              // child: ClipOval(
-                              //   child: Image.asset("assets/images/Cleaning.png"),
-                              // ),
                             ),
-                            // ),
+
                             SizedBox(
                               height: 8,
                             ),
-                            // Expanded(
-                            //   child:
+
                             Expanded(
                               child: Container(
                                 child: Text(
                                   "${skills[index].title}",
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w400,
-                                      color: Color(0xff282828)),
+                                  style: Themes()
+                                      .TextSmallLight
+                                      .copyWith(color: Color(0xff282828)),
                                 ),
                               ),
                             ),
-                            // )
                           ],
                         );
-                        //   ClipOval(
-                        //   child: Image.asset("${skills[index].image}"),
-                        // );
                       },
                     ),
                   ),
@@ -151,10 +141,13 @@ class SelectYourSkillsets extends StatelessWidget {
                       ),
                       Text(
                         'Add Skills',
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: Color(0xffF26966),
-                            fontWeight: FontWeight.bold),
+                        style: Themes()
+                            .Heading5
+                            .copyWith(color: Color(0xffF26966)),
+                        //   style: TextStyle(
+                        //       fontSize: 16,
+                        //       color: Color(0xffF26966),
+                        //       fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -183,33 +176,42 @@ class SelectYourSkillsets extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 50, vertical: 22),
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(42)),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Color(0xffA6EAFD),
-                            ),
-                          ],
-                          gradient: LinearGradient(
-                            begin: Alignment.centerLeft,
-                            end: Alignment.centerRight,
-                            colors: [
-                              Color(0xffFB8E73),
-                              Color(0xffF36D67),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SetConsultationFee()),
+                        );
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 50, vertical: 22),
+                        decoration: BoxDecoration(
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(42)),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0xffA6EAFD),
+                              ),
                             ],
-                          )),
-                      // padding: EdgeInsets.only(left: 8),
-                      child: const Text(
-                        'Continue',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
+                            gradient: LinearGradient(
+                              begin: Alignment.centerLeft,
+                              end: Alignment.centerRight,
+                              colors: [
+                                Color(0xffFB8E73),
+                                Color(0xffF36D67),
+                              ],
+                            )),
+                        // padding: EdgeInsets.only(left: 8),
+                        child: const Text(
+                          'Continue',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white),
+                        ),
                       ),
                     ),
                   ),

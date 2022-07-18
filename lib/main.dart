@@ -1,3 +1,4 @@
+import 'package:doula/screens/home/home.dart';
 import 'package:doula/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -23,18 +24,21 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+          primaryColor: Color(0xffF46F68),
           primarySwatch: MaterialColor(0xffF46F68, {
-        50: Color(0xffF46F68),
-        100: Color(0xffF46F68),
-        200: Color(0xffF46F68),
-        300: Color(0xffF46F68),
-        400: Color(0xffF46F68),
-        500: Color(0xffF46F68),
-        600: Color(0xffF46F68),
-        700: Color(0xffF46F68),
-        800: Color(0xffF46F68),
-        900: Color(0xffF46F68),
-      })),
+            50: Color(0xffF46F68),
+            100: Color(0xffF46F68),
+            200: Color(0xffF46F68),
+            300: Color(0xffF46F68),
+            400: Color(0xffF46F68),
+            500: Color(0xffF46F68),
+            600: Color(0xffF46F68),
+            700: Color(0xffF46F68),
+            800: Color(0xffF46F68),
+            900: Color(0xffF46F68),
+          }),
+          dividerColor: Colors.transparent,
+          fontFamily: 'General Sans'),
       home: const splashscreen(),
     );
   }
@@ -51,22 +55,7 @@ class _AppState extends State<App> {
   int _selectedTabIndex = 0;
 
   List _pages = [
-    Text(
-      'Index 0: Home',
-    ),
-    Text(
-      'Index 1: Business',
-    ),
-    Text(
-      'Index 2: School',
-    ),
-    Text(
-      'Index 3: Settings',
-    ),
-    Text(
-      'Index 3: Settings',
-    ),
-    // Home(),
+    Home(),
     // ContactPatients(),
     // BookingRequests(),
     // GyneProfile(),

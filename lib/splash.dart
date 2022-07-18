@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:doula/screens/auth/doula_dashboard_earnings.dart';
 import 'package:doula/screens/auth/doula_onboard_help.dart';
 import 'package:doula/screens/auth/doula_onboard_intro.dart';
+import 'package:doula/screens/auth/mobile_number.dart';
 import 'package:doula/screens/auth/onboard_welcome_page.dart';
 import 'package:doula/screens/auth/select_language.dart';
 import 'package:doula/screens/auth/select_your_skillsets.dart';
@@ -28,8 +29,10 @@ class _splashscreenState extends State<splashscreen> {
     super.initState();
     Timer(
         Duration(seconds: 5),
-        () => Navigator.pushAndRemoveUntil(context,
-            MaterialPageRoute(builder: (context) => Home()), (route) => false));
+        () => Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => EnterMobileNumberPage()),
+            (route) => false));
   }
 
   @override

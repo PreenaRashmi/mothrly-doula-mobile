@@ -5,6 +5,9 @@ import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:doula/screens/auth/setup_profile/setup_profile_step2.dart';
 
+import '../../../components/cbutton.dart';
+import '../../../components/inputField.dart';
+import '../../../themes.dart';
 import 'components/linear_percent_indicator.dart';
 
 class SetupProfileStep1 extends StatefulWidget {
@@ -13,7 +16,7 @@ class SetupProfileStep1 extends StatefulWidget {
 }
 
 class _SetupProfileStep1State extends State<SetupProfileStep1> {
-  GlobalKey<FormState> formKey = GlobalKey();
+  GlobalKey<FormState> _formKey = GlobalKey();
   double _initial = 0.17;
 
   Widget _stepIndicator() {
@@ -34,10 +37,7 @@ class _SetupProfileStep1State extends State<SetupProfileStep1> {
       SizedBox(height: 8),
       Text(
         "Step $value out of 6",
-        style: TextStyle(
-            color: Color(0xff676767),
-            fontSize: 14,
-            fontWeight: FontWeight.w500),
+        style: Themes().TextSmallLight.copyWith(color: Color(0xff404040)),
       ),
       // ElevatedButton(
       //   onPressed: () {
@@ -59,7 +59,9 @@ class _SetupProfileStep1State extends State<SetupProfileStep1> {
         backgroundColor: const Color(0xFFFAFAFA),
         elevation: 0,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: SvgPicture.asset("assets/icons/back_arrow.svg"),
         ),
       ),
@@ -72,9 +74,9 @@ class _SetupProfileStep1State extends State<SetupProfileStep1> {
                 child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   'Set up your Profile',
-                  style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+                  style: Themes().Heading2,
                 ),
                 SizedBox(height: 30),
                 Column(
@@ -84,105 +86,41 @@ class _SetupProfileStep1State extends State<SetupProfileStep1> {
                     SizedBox(height: 60),
                     Text(
                       "Update your Details",
-                      style: TextStyle(
-                          color: Color(0xff676767),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
+                      style: Themes().Heading5,
                     ),
                     SizedBox(
                       height: 18,
                     ),
-                    Column(
-                      children: [
-                        TextField(
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 15, horizontal: 15),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Color(0xff63BFEE)),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(10.0)),
-                              borderSide: BorderSide(color: Color(0xffC0C0C0)),
-                            ),
-                            labelText: 'Full Name',
-                            labelStyle: TextStyle(
-                                fontWeight: FontWeight.w500,
-                                fontSize: 14,
-                                color: Color(0xffC0C0C0)),
+                    Form(
+                      key: _formKey,
+                      child: Column(
+                        children: [
+                          CInput(
+                            labelText: "Full Name",
                           ),
-                        ),
-                        SizedBox(
-                          height: 18,
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: TextField(
-                                obscureText: true,
-                                decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.symmetric(
-                                      vertical: 15, horizontal: 15),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10.0)),
-                                    borderSide:
-                                        BorderSide(color: Color(0xff63BFEE)),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10.0)),
-                                    borderSide:
-                                        BorderSide(color: Color(0xffC0C0C0)),
-                                  ),
-                                  labelText: 'E-mail address (optional)',
-                                  labelStyle: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14,
-                                      color: Color(0xffC0C0C0)),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: CInput(
+                                  labelText: "'E-mail address (optional)'",
                                 ),
                               ),
-                            ),
-                            SizedBox(
-                              width: 18,
-                            ),
-                            IntrinsicWidth(
-                              stepWidth: 100,
-                              child: TextField(
-                                obscureText: true,
-                                decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.symmetric(
-                                      vertical: 15, horizontal: 15),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10.0)),
-                                    borderSide:
-                                        BorderSide(color: Color(0xff63BFEE)),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10.0)),
-                                    borderSide:
-                                        BorderSide(color: Color(0xffC0C0C0)),
-                                  ),
-                                  labelText: 'Age',
-                                  labelStyle: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14,
-                                      color: Color(0xffC0C0C0)),
+                              SizedBox(
+                                width: 18,
+                              ),
+                              IntrinsicWidth(
+                                stepWidth: 100,
+                                child: CInput(
+                                  labelText: "Age",
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 18,
-                        ),
-                      ],
+                            ],
+                          ),
+                          SizedBox(
+                            height: 18,
+                          ),
+                        ],
+                      ),
                     )
                   ],
                 ),
@@ -191,38 +129,21 @@ class _SetupProfileStep1State extends State<SetupProfileStep1> {
             Row(
               children: [
                 Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 50, vertical: 22),
-                    decoration: BoxDecoration(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(42)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0xffA6EAFD),
-                          ),
-                        ],
-                        gradient: LinearGradient(
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
-                          colors: [
-                            Color(0xffFB8E73),
-                            Color(0xffF36D67),
-                          ],
-                        )),
-                    // padding: EdgeInsets.only(left: 8),
-                    child: const Text(
-                      'Continue',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
+                  child: CButton(
+                    onTapButton: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SetupProfileStep2()),
+                      );
+                    },
+                    label: "Continue",
+                    vertical: 16,
+                    primary: true,
                   ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),

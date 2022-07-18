@@ -1,4 +1,8 @@
+import 'package:doula/screens/auth/setup_profile/setup_profile_step1.dart';
+import 'package:doula/themes.dart';
 import 'package:flutter/material.dart';
+
+import '../../components/cbutton.dart';
 
 class DoulaOnboardIntro extends StatefulWidget {
   DoulaOnboardIntro({Key? key, this.title}) : super(key: key);
@@ -10,9 +14,15 @@ class DoulaOnboardIntro extends StatefulWidget {
 }
 
 class _DoulaOnboardIntroState extends State<DoulaOnboardIntro> {
-  Widget _continueButton() {
+  Widget _continueButton(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        print("continuebuttn");
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => SetupProfileStep1()),
+        );
+      },
       child: Container(
         width: MediaQuery.of(context).size.width,
         child: OutlinedButton(
@@ -55,17 +65,12 @@ class _DoulaOnboardIntroState extends State<DoulaOnboardIntro> {
       textAlign: TextAlign.center,
       text: TextSpan(children: [
         TextSpan(
-          text: 'Let’s Set up your Profile \n\n',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 30,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+            text: 'Let’s Set up your Profile \n\n',
+            style: Themes().Header1.copyWith(color: Colors.white)),
         TextSpan(
           text:
               'To complete your registration, please click a selfie with your Aadhar Card visible in hand',
-          style: TextStyle(color: Colors.white, fontSize: 14, height: 1.5),
+          style: Themes().TextSmall.copyWith(color: Colors.white, height: 1.5),
         ),
       ]),
     );
@@ -91,7 +96,48 @@ class _DoulaOnboardIntroState extends State<DoulaOnboardIntro> {
             SizedBox(
               height: 150,
             ),
-            _continueButton(),
+            Row(
+              children: [
+                Expanded(
+                  // child: Container(
+                  //   width: MediaQuery.of(context).size.width,
+                  //   child: OutlinedButton(
+                  //     onPressed: () {
+                  //       Navigator.push(
+                  //         context,
+                  //         MaterialPageRoute(
+                  //             builder: (context) => SetupProfileStep1()),
+                  //       );
+                  //     },
+                  //     child: const Text(
+                  //       'Continue',
+                  //       style: TextStyle(color: Color(0xffF26966)),
+                  //     ),
+                  //     style: OutlinedButton.styleFrom(
+                  //         backgroundColor: Color(0xfffffffff),
+                  //         padding: const EdgeInsets.symmetric(
+                  //             horizontal: 50, vertical: 22),
+                  //         textStyle: const TextStyle(
+                  //             fontSize: 18, fontWeight: FontWeight.bold),
+                  //         // side: BorderSide(
+                  //         //     color: Color(0xffF36D67), width: 2),
+                  //         shape: StadiumBorder()),
+                  //   ),
+                  // ),
+                  child: CButton(
+                      onTapButton: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SetupProfileStep1()),
+                        );
+                      },
+                      label: "Continue",
+                      vertical: 16,
+                      primary: false),
+                ),
+              ],
+            )
           ],
         ),
       ),

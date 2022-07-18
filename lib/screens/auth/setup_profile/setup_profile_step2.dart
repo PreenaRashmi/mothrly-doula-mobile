@@ -5,6 +5,8 @@ import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:doula/screens/auth/setup_profile/setup_profile_step3.dart';
 
+import '../../../components/cbutton.dart';
+import '../../../themes.dart';
 import 'components/linear_percent_indicator.dart';
 
 class SetupProfileStep2 extends StatefulWidget {
@@ -34,10 +36,7 @@ class _SetupProfileStep2State extends State<SetupProfileStep2> {
       SizedBox(height: 8),
       Text(
         "Step 2 out of 6 ",
-        style: TextStyle(
-            color: Color(0xff676767),
-            fontSize: 14,
-            fontWeight: FontWeight.w500),
+        style: Themes().TextSmallLight.copyWith(color: Color(0xff404040)),
       ),
       // ElevatedButton(
       //   onPressed: () {
@@ -73,9 +72,9 @@ class _SetupProfileStep2State extends State<SetupProfileStep2> {
                 child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   'Set up your Profile',
-                  style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+                  style: Themes().Heading2,
                 ),
                 SizedBox(height: 30),
                 Column(
@@ -102,17 +101,14 @@ class _SetupProfileStep2State extends State<SetupProfileStep2> {
                     ),
                     Text(
                       "Upload Profile Picture",
-                      style: TextStyle(
-                          color: Color(0xff676767),
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18),
+                      style: Themes().Heading5,
                     ),
                     SizedBox(
                       height: 20,
                     ),
                     Text(
                       "Your Profile Picture must be :- ",
-                      style: TextStyle(color: Color(0xff969696)),
+                      style: Themes().TextSmallLight,
                     ),
                     SizedBox(
                       height: 20,
@@ -121,25 +117,16 @@ class _SetupProfileStep2State extends State<SetupProfileStep2> {
                       text: TextSpan(children: [
                         TextSpan(
                           text: '1.',
-                          style: TextStyle(
-                            color: Color(0xff969696),
-                            fontSize: 14,
-                          ),
+                          style: Themes().TextSmallLight,
                         ),
                         TextSpan(
                           text: 'High Resolution.',
-                          style: TextStyle(
-                              color: Color(0xff676767),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500),
+                          style: Themes().TextSmallBold,
                         ),
                         TextSpan(
                           text:
                               'The image selected should be clear, no blur images will get approved.',
-                          style: TextStyle(
-                              fontSize: 14,
-                              height: 1,
-                              color: Color(0xff969696)),
+                          style: Themes().TextSmallLight,
                         ),
                       ]),
                     ),
@@ -150,25 +137,16 @@ class _SetupProfileStep2State extends State<SetupProfileStep2> {
                       text: TextSpan(children: [
                         TextSpan(
                           text: '2.',
-                          style: TextStyle(
-                            color: Color(0xff969696),
-                            fontSize: 14,
-                          ),
+                          style: Themes().TextSmallLight,
                         ),
                         TextSpan(
                           text:
                               'Please make sure you are looking in the camera and the picture selected is',
-                          style: TextStyle(
-                              fontSize: 14,
-                              height: 1,
-                              color: Color(0xff969696)),
+                          style: Themes().TextSmallLight,
                         ),
                         TextSpan(
                           text: '\tFront Faced.',
-                          style: TextStyle(
-                              color: Color(0xff676767),
-                              fontSize: 14,
-                              fontWeight: FontWeight.w500),
+                          style: Themes().TextSmallBold,
                         ),
                       ]),
                     )
@@ -179,38 +157,21 @@ class _SetupProfileStep2State extends State<SetupProfileStep2> {
             Row(
               children: [
                 Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 50, vertical: 22),
-                    decoration: BoxDecoration(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(42)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0xffA6EAFD),
-                          ),
-                        ],
-                        gradient: LinearGradient(
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
-                          colors: [
-                            Color(0xffFB8E73),
-                            Color(0xffF36D67),
-                          ],
-                        )),
-                    // padding: EdgeInsets.only(left: 8),
-                    child: const Text(
-                      'Continue',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
+                  child: CButton(
+                    onTapButton: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => SetupProfileStep3()),
+                      );
+                    },
+                    label: "Continue",
+                    vertical: 16,
+                    primary: true,
                   ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),

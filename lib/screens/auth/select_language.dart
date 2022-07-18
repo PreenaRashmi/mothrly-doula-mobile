@@ -1,7 +1,11 @@
+import 'package:doula/screens/auth/doula_onboard_intro.dart';
+import 'package:doula/themes.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 //import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:flutter/material.dart';
+
+import '../../components/cbutton.dart';
 // import 'package:gyn/screens/auth/setup_profile/setup_profile_step1.dart';
 
 class SelectLanguage extends StatefulWidget {
@@ -71,7 +75,9 @@ class _SelectLanguageState extends State<SelectLanguage> {
         backgroundColor: const Color(0xFFFAFAFA),
         elevation: 0,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: SvgPicture.asset("assets/icons/back_arrow.svg"),
         ),
       ),
@@ -84,9 +90,9 @@ class _SelectLanguageState extends State<SelectLanguage> {
                 child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   'Select Language',
-                  style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+                  style: Themes().Heading2,
                 ),
                 SizedBox(height: 8),
                 Form(
@@ -109,8 +115,7 @@ class _SelectLanguageState extends State<SelectLanguage> {
                                     title: Align(
                                       child: Text(
                                         "${data.number}",
-                                        style:
-                                            TextStyle(color: Color(0xff8B8B8B)),
+                                        style: Themes().TextSmall,
                                       ),
                                       alignment: Alignment(-1.1, 0),
                                     ),
@@ -170,38 +175,21 @@ class _SelectLanguageState extends State<SelectLanguage> {
             Row(
               children: [
                 Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 50, vertical: 22),
-                    decoration: BoxDecoration(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(42)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0xffA6EAFD),
-                          ),
-                        ],
-                        gradient: LinearGradient(
-                          begin: Alignment.centerLeft,
-                          end: Alignment.centerRight,
-                          colors: [
-                            Color(0xffFB8E73),
-                            Color(0xffF36D67),
-                          ],
-                        )),
-                    // padding: EdgeInsets.only(left: 8),
-                    child: const Text(
-                      'Continue',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
+                  child: CButton(
+                    onTapButton: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => DoulaOnboardIntro()),
+                      );
+                    },
+                    label: "Continue",
+                    vertical: 16,
+                    primary: true,
                   ),
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),

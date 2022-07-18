@@ -1,3 +1,4 @@
+import 'package:doula/screens/home/home.dart';
 import 'package:flutter/material.dart';
 
 class OnboardWelcomePage extends StatefulWidget {
@@ -16,7 +17,12 @@ class _OnboardWelcomePageState extends State<OnboardWelcomePage> {
       child: Container(
         width: MediaQuery.of(context).size.width,
         child: OutlinedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Home()),
+            );
+          },
           child: const Text(
             'Go Online',
             style: TextStyle(color: Color(0xffF26966)),

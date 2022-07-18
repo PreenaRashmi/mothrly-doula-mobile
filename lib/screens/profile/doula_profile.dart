@@ -4,6 +4,9 @@ import 'package:flutter_svg/svg.dart';
 // import 'package:gyn/screens/profile/edit_profile.dart';
 import 'dart:math' as math;
 
+import '../../components/cbutton.dart';
+import 'edit_profile.dart';
+
 class DoulaProfile extends StatefulWidget {
   @override
   _DoulaProfileState createState() => _DoulaProfileState();
@@ -477,42 +480,53 @@ class ProfileHeader extends StatelessWidget {
         SizedBox(
           height: 15,
         ),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            onPrimary: Colors.white,
-            shape: StadiumBorder(),
-            padding: const EdgeInsets.all(0.0),
-          ),
-          onPressed: () {
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => EditProfile()),
-            // );
+        // InkWell(
+        //   // splashColor: Colors.orange,
+        //   onTap: () {
+        //     // Navigator.push(
+        //     //   context,
+        //     //   MaterialPageRoute(builder: (context) => EditProfile()),
+        //     // );
+        //   },
+        //
+        //   child: Container(
+        //     decoration: BoxDecoration(
+        //         borderRadius: const BorderRadius.all(Radius.circular(42)),
+        //         // boxShadow: [
+        //         //   BoxShadow(
+        //         //     color: Color(0xffA6EAFD),
+        //         //   ),
+        //         // ],
+        //         gradient: LinearGradient(
+        //           begin: Alignment.topCenter,
+        //           end: Alignment.bottomCenter,
+        //           colors: [
+        //             Color(0xffFB8E73),
+        //             Color(0xffF36D67),
+        //           ],
+        //         )),
+        //     width: double.infinity,
+        //     padding: const EdgeInsets.symmetric(vertical: 18),
+        //     child: const Text(
+        //       'Edit Profile',
+        //       textAlign: TextAlign.center,
+        //       style: TextStyle(
+        //           fontSize: 16,
+        //           fontWeight: FontWeight.bold,
+        //           color: Colors.white),
+        //     ),
+        //   ),
+        // ),
+        CButton(
+          onTapButton: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => EditProfile()),
+            );
           },
-          child: Container(
-            decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(42)),
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0xffA6EAFD),
-                  ),
-                ],
-                gradient: LinearGradient(
-                  begin: Alignment.centerLeft,
-                  end: Alignment.centerRight,
-                  colors: [
-                    Color(0xffFB8E73),
-                    Color(0xffF36D67),
-                  ],
-                )),
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(vertical: 18),
-            child: const Text(
-              'Edit Profile',
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-          ),
+          label: "Edit Button",
+          vertical: 16,
+          color: Colors.white,
         ),
       ],
     );

@@ -36,6 +36,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_svg: ^0.22.0
   syncfusion_flutter_charts: ^20.1.61
+  flutter_screenutil: ^5.4.0+1
+  intl_phone_number_input: ^0.7.0+2
+  intl_phone_field: ^3.1.0
+  percent_indicator: ^4.2.1
+  flutter_switch: ^0.3.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -76,12 +81,16 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
+  fonts:
+     - family: General Sans
+       fonts:
+         - asset: assets/fonts/GeneralSans-Bold.ttf
+         - asset: assets/fonts/GeneralSans-Extralight.ttf
+         - asset: assets/fonts/GeneralSans-light.ttf
+         - asset: assets/fonts/GeneralSans-Medium.ttf
+         - asset: assets/fonts/GeneralSans-Regular.ttf
+         - asset: assets/fonts/GeneralSans-SemiBold.ttf
+         - asset: assets/fonts/GeneralSans-Variable.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

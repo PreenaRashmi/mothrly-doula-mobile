@@ -1,3 +1,4 @@
+import 'package:doula/screens/auth/onboard_welcome_page.dart';
 import 'package:flutter/material.dart';
 
 class DoulaOnboardHelp extends StatelessWidget {
@@ -70,7 +71,7 @@ class DoulaOnboardHelp extends StatelessWidget {
                 // textColor: Colors.white,
                 onPressed: () {},
                 child: Text(
-                  "Help",
+                  "HELP",
                   style: TextStyle(color: Colors.white),
                 ),
                 // shape: CircleBorder(side: BorderSide(color: Colors.transparent)),
@@ -129,7 +130,13 @@ class DoulaOnboardHelp extends StatelessWidget {
                     child: Container(
                       padding: EdgeInsets.only(right: 8),
                       child: OutlinedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => OnboardWelcomePage()),
+                          );
+                        },
                         child: const Text(
                           'Profile',
                           style: TextStyle(color: Colors.black),
